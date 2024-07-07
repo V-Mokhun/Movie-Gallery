@@ -10,6 +10,9 @@ const config = {
       padding: "1.5rem",
     },
     extend: {
+      screens: {
+        xs: "479px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

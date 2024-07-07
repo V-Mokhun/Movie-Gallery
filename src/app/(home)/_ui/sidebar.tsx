@@ -20,7 +20,7 @@ export const Sidebar = ({}: SidebarProps) => {
   };
 
   return (
-    <aside className="flex-auto min-w-48 p-4 bg-gray-300 rounded-lg">
+    <aside className="flex-1 w-full sm:flex-[0_1_25%] sm:min-w-48 p-4 mb-4 sm:mb-0 bg-gray-300 rounded-lg">
       <div className="flex items-center mb-4">
         <StarIcon className="w-8 h-8 mr-2" />
         <h2 className="text-xl font-bold">Favorite List</h2>

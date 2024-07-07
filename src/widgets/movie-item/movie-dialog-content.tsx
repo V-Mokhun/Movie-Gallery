@@ -23,13 +23,13 @@ export const MovieDialogContent = ({
 }: MovieDialogContentProps) => {
   return (
     <DialogContent>
-      <div className="flex gap-4">
-        <div className="flex flex-col gap-4 min-w-48">
+      <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col items-center gap-4 sm:min-w-48 mb-2 sm:mb-0">
           <Image
             src={movie.img}
             alt={movie.name}
-            className="object-cover w-full h-auto rounded-md"
-            width={300}
+            className="object-cover max-w-full h-auto rounded-md"
+            width={250}
             height={500}
           />
           <div className="flex items-center gap-2 justify-between">
@@ -56,7 +56,7 @@ export const MovieDialogContent = ({
           <DialogDescription>{movie.description}</DialogDescription>
         </DialogHeader>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         <ul className="grid grid-cols-2 gap-4 min-w-48">
           {movie.genres.map((genre) => (
             <li
