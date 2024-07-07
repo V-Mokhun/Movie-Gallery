@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <FavoriteMoviesProvider>
-          <main className="py-6">{children}</main>
+          <main className="py-6 h-full">{children}</main>
         </FavoriteMoviesProvider>
       </body>
     </html>
