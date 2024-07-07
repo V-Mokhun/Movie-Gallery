@@ -1,18 +1,32 @@
-import { getMovies } from "@/shared/api";
+"use client";
+
+import { getMovies, Movie } from "@/shared/api";
+import { cn } from "@/shared/lib";
+import { useMoviesView } from "@/shared/lib/hooks";
 import { MovieItem } from "@/widgets";
+import { useEffect, useState } from "react";
 
 interface MoviesListProps {}
 
-export const MoviesList = async ({}: MoviesListProps) => {
-  const movies = await getMovies();
+export const MoviesList = ({}: MoviesListProps) => {
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [view] = useMoviesView();
+
+  useEffect(() => {
+    getMovies().then(setMovies);
+  }, []);
 
   return (
-    <div className="flex flex-col items-center w-full">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {movies.map((movie) => (
-          <MovieItem key={movie.id} movie={movie} />
-        ))}
-      </div>
-    </div>
+    <ul
+      className={cn(
+        view === "grid"
+          ? "grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
+          : "flex flex-col gap-4 w-full"
+      )}
+    >
+      {movies.map((movie) => (
+        <MovieItem view={view} key={movie.id} movie={movie} />
+      ))}
+    </ul>
   );
 };
