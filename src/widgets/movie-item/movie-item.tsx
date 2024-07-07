@@ -1,26 +1,59 @@
 "use client";
 
+import { Movie } from "@/shared/api";
+import { FAVORITE_MOVIES_STORAGE_KEY } from "@/shared/consts";
+import { FavoriteMovie, useFavoriteMovies } from "@/shared/context";
 import { StarIcon } from "lucide-react";
 import Image from "next/image";
 
-interface MovieItemProps {}
+interface MovieItemProps {
+  movie: Movie;
+}
 
-export const MovieItem = ({}: MovieItemProps) => {
+export const MovieItem = ({ movie }: MovieItemProps) => {
+  const { favoriteMovies, setFavoriteMovies } = useFavoriteMovies();
+  const isFavorite = favoriteMovies.some((fav) => fav.id === movie.id);
+
+  const handleFavorite = () => {
+    let favorites: FavoriteMovie[];
+    if (isFavorite) {
+      favorites = favoriteMovies.filter((fav) => fav.id !== movie.id);
+    } else {
+      favorites = [...favoriteMovies, { id: movie.id, name: movie.name }];
+    }
+
+    localStorage.setItem(
+      FAVORITE_MOVIES_STORAGE_KEY,
+      JSON.stringify(favorites)
+    );
+    setFavoriteMovies(favorites);
+  };
+
   return (
     <li className="relative p-4 bg-gray-200 rounded-lg">
       <div className="relative w-full h-48 mb-4 bg-gray-300">
         <Image
-          src="/placeholder.svg"
-          alt="Movie Thumbnail"
+          src={movie.img}
+          alt={movie.name}
           className="object-cover w-full h-full rounded-lg"
-          width={300}
+          width={200}
           height={200}
         />
-        <StarIcon className="absolute -top-2 -right-2 w-6 h-6" />
+        <button
+          className="absolute z-10 -top-3 -right-3"
+          type="button"
+          onClick={handleFavorite}
+        >
+          <StarIcon
+            className={`w-6 h-6 text-primary transition-opacity hover:opacity-50 ${
+              isFavorite && "fill-primary"
+            }`}
+          />
+        </button>
       </div>
       <div className="text-center">
-        <h3 className="font-bold">Movie Name</h3>
-        <span className="text-sm text-gray-600">Year</span>
+        <h3 className="font-bold flex-1">{movie.name}</h3>
+        <span className="text-sm text-gray-600">{movie.year}</span>
       </div>
     </li>
   );
