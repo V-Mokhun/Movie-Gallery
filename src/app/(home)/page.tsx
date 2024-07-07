@@ -1,12 +1,35 @@
-import { MoviesList, Sidebar } from "./_ui";
+"use client";
+
+import { useEffect, useState } from "react";
+import { MoviesActions, MoviesList, Sidebar } from "./_ui";
+import { getMovies, Movie } from "@/shared/api";
 
 export default function Home() {
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [genres, setGenres] = useState<string[]>([]);
+
+  useEffect(() => {
+    getMovies().then((data) => {
+      setMovies(data);
+      const formattedGenres = data
+        .map((movie) => {
+          return movie.genres.map(
+            (genre) => genre[0].toUpperCase() + genre.slice(1)
+          );
+        })
+        .flat();
+
+      setGenres([...new Set(formattedGenres)]);
+    });
+  }, []);
+
   return (
     <section className="py-4 md:py-8">
       <div className="flex flex-col-reverse sm:flex-row items-start gap-4 max-w-7xl px-4 mx-auto">
         <div className="flex flex-col items-center w-full">
-          <h1 className="mb-8 text-3xl font-bold">Movies Gallery</h1>
-          <MoviesList />
+          <h1 className="mb-4 text-3xl font-bold">Movies Gallery</h1>
+          <MoviesActions genres={genres} />
+          <MoviesList movies={movies} />
         </div>
         <Sidebar />
       </div>

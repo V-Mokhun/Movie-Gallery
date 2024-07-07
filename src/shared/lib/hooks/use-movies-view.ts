@@ -12,14 +12,14 @@ export function useMoviesView() {
   };
 
   const getSnapshot = () =>
-    (localStorage.getItem(MOVIES_VIEW_STORAGE_KEY) ?? "list") as MoviesView;
+    (localStorage.getItem(MOVIES_VIEW_STORAGE_KEY) ?? "grid") as MoviesView;
 
   const subscribe = (listener: () => void) => {
     window.addEventListener("storage", listener);
     return () => void window.removeEventListener("storage", listener);
   };
 
-  const getServerSnapshot = () => "list" as MoviesView;
+  const getServerSnapshot = () => "grid" as MoviesView;
 
   const view = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 

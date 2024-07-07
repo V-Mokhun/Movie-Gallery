@@ -1,20 +1,16 @@
 "use client";
 
-import { getMovies, Movie } from "@/shared/api";
+import { Movie } from "@/shared/api";
 import { cn } from "@/shared/lib";
 import { useMoviesView } from "@/shared/lib/hooks";
 import { MovieItem } from "@/widgets";
-import { useEffect, useState } from "react";
 
-interface MoviesListProps {}
+interface MoviesListProps {
+  movies: Movie[];
+}
 
-export const MoviesList = ({}: MoviesListProps) => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+export const MoviesList = ({ movies }: MoviesListProps) => {
   const [view] = useMoviesView();
-
-  useEffect(() => {
-    getMovies().then(setMovies);
-  }, []);
 
   return (
     <ul
