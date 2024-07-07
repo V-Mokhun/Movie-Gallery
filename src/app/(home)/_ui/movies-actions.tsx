@@ -5,9 +5,7 @@ import { useMoviesView } from "@/shared/lib/hooks";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/shared/ui";
@@ -37,7 +35,10 @@ export const MoviesActions = ({ genres }: MoviesActionsProps) => {
 
   return (
     <div className="flex w-full items-center justify-between gap-4 mb-6">
-      <Select defaultValue="none" onValueChange={handleGenreChange}>
+      <Select
+        defaultValue={searchParams.get("genre") ?? "none"}
+        onValueChange={handleGenreChange}
+      >
         <SelectTrigger className="max-w-xs">
           <SelectValue placeholder="Select a genre" />
         </SelectTrigger>

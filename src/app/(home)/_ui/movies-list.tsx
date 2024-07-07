@@ -15,6 +15,7 @@ export const MoviesList = ({ movies }: MoviesListProps) => {
   return (
     <ul
       className={cn(
+        "w-full",
         view === "grid"
           ? "grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
           : "flex flex-col gap-4 w-full"
