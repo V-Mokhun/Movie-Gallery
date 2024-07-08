@@ -1,8 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Movies Gallery
 
-## Getting Started
+![Movies Gallery](./readme-images/home.png)
 
-First, run the development server:
+This is a Movies Gallery project that allows users to view a list of movies, add them to their favorites and view details of each movie displayed in a modal.
+
+## Technologies
+
+The project uses Next.js, although it is not necessary and it would be fine to use React. For styling TailwindCSS and shadcn/ui are used.
+
+For handling the favorite movies data, the project uses React Context and Local Storage. Somewhat new **useSyncExternalStore** hook is used to sync the context state with the local storage (for view state persistence, _as it must be immutable data (primitive types), you can't use arrays and store favoriteMovies in same fashion_).
+
+## Running the project
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -15,22 +25,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
