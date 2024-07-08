@@ -1,8 +1,7 @@
 "use client";
 
 import { Movie } from "@/shared/api";
-import { cn } from "@/shared/lib";
-import { useMoviesView } from "@/shared/lib/hooks";
+import { cn, useMoviesView } from "@/shared/lib";
 import { MovieItem } from "@/widgets";
 
 interface MoviesListProps {

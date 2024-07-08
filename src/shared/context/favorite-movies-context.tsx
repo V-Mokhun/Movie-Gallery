@@ -1,7 +1,14 @@
 "use client";
 
 import { FAVORITE_MOVIES_STORAGE_KEY } from "@/shared/consts";
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 export interface FavoriteMovie {
   id: number;
@@ -10,7 +17,7 @@ export interface FavoriteMovie {
 
 interface FavoriteMoviesContextProps {
   favoriteMovies: FavoriteMovie[];
-  setFavoriteMovies: (movies: FavoriteMovie[]) => void;
+  setFavoriteMovies: Dispatch<SetStateAction<FavoriteMovie[]>>;
 }
 
 const FavoriteMoviesContext = createContext<

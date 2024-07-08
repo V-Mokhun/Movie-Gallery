@@ -1,7 +1,6 @@
 "use client";
 
-import { cn } from "@/shared/lib";
-import { useMoviesView } from "@/shared/lib/hooks";
+import { cn, useMoviesView } from "@/shared/lib";
 import {
   Select,
   SelectContent,

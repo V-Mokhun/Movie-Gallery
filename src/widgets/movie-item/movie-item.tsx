@@ -3,12 +3,11 @@
 import { Movie } from "@/shared/api";
 import { FAVORITE_MOVIES_STORAGE_KEY } from "@/shared/consts";
 import { FavoriteMovie, useFavoriteMovies } from "@/shared/context";
+import { cn, MoviesView } from "@/shared/lib";
 import { Dialog, DialogTrigger } from "@/shared/ui";
+import { MovieItemRow } from "./movie-item-row";
 import { MovieDialogContent } from "./movie-dialog-content";
 import { MovieItemCard } from "./movie-item-card";
-import { MovieItemRow } from "../movie-item-row";
-import { cn } from "@/shared/lib";
-import { MoviesView } from "@/shared/lib/hooks";
 
 interface MovieItemProps {
   movie: Movie;

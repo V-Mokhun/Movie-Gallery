@@ -22,7 +22,7 @@ export const MovieDialogContent = ({
   isFavorite,
 }: MovieDialogContentProps) => {
   return (
-    <DialogContent>
+    <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="flex flex-col items-center gap-4 sm:min-w-48 mb-2 sm:mb-0">
           <Image
