@@ -31,7 +31,10 @@ export default function Home() {
           .flat();
 
         setGenres([...new Set(formattedGenres)]);
+        setError("");
       } catch (error) {
+        setMovies([]);
+
         if (error instanceof Error) {
           setError(error.message);
         } else if (typeof error === "string") {
